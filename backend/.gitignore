@@ -3,3 +3,11 @@
 
 # Cache Files are ignored
 __pycache__/
+.pytest_cache/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Ignore test.db (SQLite Database solely for testing)
+test.db

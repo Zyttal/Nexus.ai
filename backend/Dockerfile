@@ -6,6 +6,14 @@ COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
+# Migrations Directory and the mandatory alembic.ini
+COPY ./migrations /code/migrations
+COPY ./alembic.ini /code/alembic.ini
+
+# Entire App Directory
 COPY ./app /code/app
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80", "--reload"]
+COPY ./entrypoint.sh /code/entrypoint.sh
+RUN chmod +x /code/entrypoint.sh
+
+ENTRYPOINT [ "/code/entrypoint.sh" ]

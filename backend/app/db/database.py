@@ -1,8 +1,6 @@
 from typing import Any, Generator
 from sqlalchemy import Engine, create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
-from sqlmodel import Session
+from sqlalchemy.orm import sessionmaker, declarative_base, Session
 from dotenv import load_dotenv, find_dotenv
 import os
 
