@@ -28,11 +28,11 @@ services:
       - nexus-network
 
   nexus-web:
-    build: frontend/nexus.ai-web/
+    build: frontend/nexus-web/
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend/nexus.ai-web:/app
+      - ./frontend/nexus-web:/app
       - /app/node_modules
       - /app/.next
     environment:
