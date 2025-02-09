@@ -4,7 +4,7 @@ WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt debugpy
 
 # Migrations Directory and the mandatory alembic.ini
 COPY ./migrations /code/migrations

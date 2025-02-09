@@ -1,2 +1,5 @@
 # Ignore Environment Variables
 .env
+
+# Ignore .vscode (Debug setup)
+.vscode/
