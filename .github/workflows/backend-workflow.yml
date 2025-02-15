@@ -1,0 +1,37 @@
+name: FastAPI Worfklow
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - 'backend/**'
+  pull_request:
+    branches: ["master"]
+    paths:
+      - 'backend/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Set up .env File from PROD_SECRETS
+        run : |
+            touch lib/.env
+            echo "${{secrets.PROD_SECRETS}}" >> lib/.env
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      - name: Run linting
+        run: |
+          pip install flake8
+          flake8 backend/app
