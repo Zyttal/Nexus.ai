@@ -1,0 +1,30 @@
+name: Frontend Workflow
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - 'frontend/nexus-web'
+  pull_request: 
+    branches: ["master"]
+    paths:
+      - 'frontend/nexus-web'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Frontend Web Linting
+        run: |
+          cd frontend/nexus-web
+          npm install
+          npm run lint     
